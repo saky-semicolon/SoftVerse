@@ -1,0 +1,23 @@
+@startuml OrderProcessingSystem
+skinparam monochrome true
+
+[*] --> Placed: Order Placed
+Placed --> Confirmed: Order Confirmed
+Confirmed --> Shipped: Shipped
+Shipped --> Delivered: Delivered
+Delivered --> [*]
+
+state Placed {
+  [*] --> Confirmed: Confirm Order
+  Confirmed --> [*]: Cancel Order
+}
+
+state Confirmed {
+  Shipped --> [*]: Cancel Order
+}
+
+state Shipped {
+  Delivered --> [*]: Confirm Delivery
+}
+
+@enduml

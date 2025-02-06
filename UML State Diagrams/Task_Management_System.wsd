@@ -1,0 +1,12 @@
+@startuml TaskManagementSystem
+[*] --> ToDo
+
+state ToDo {
+    [*] --> TaskCreated
+    TaskCreated --> TaskInProgress : Start Task
+    TaskInProgress --> TaskCompleted : Complete Task
+    TaskCompleted --> TaskVerified : Verify Task
+    TaskVerified --> TaskClosed : Close Task
+    TaskClosed --> [*] : Reopen Task
+}
+@enduml
